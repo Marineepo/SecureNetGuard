@@ -1,0 +1,27 @@
+{
+  "name": "securenetguard",
+  "version": "1.0.0",
+  "description": "A security program combining web filtering, secure connections, and centralized management.",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "socket.io-client": "^4.7.5",
+    "winston": "^3.14.1"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "@types/node": "^20.14.14",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "electron": "^24.8.8",
+    "typescript": "^5.5.4"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
