@@ -27,14 +27,22 @@ const App: React.FC = () => {
     
     useEffect(() => {
         const fetchPolicies = async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                setStatus('Not authenticated');
+                return;
+            }
+        
             try {
-                const response = await axios.get('https://localhost:5000/api/policies');
+                const response = await axios.get('https://localhost:5000/api/policies', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
                 setPolicies(response.data);
                 setStatus('Policies Loaded');
-                logger.info('Policies fetched', response.data);
             } catch (error) {
                 setStatus('Failed to load policies');
-                logger.error('Error fetching policies', error);
             }
         };
     
