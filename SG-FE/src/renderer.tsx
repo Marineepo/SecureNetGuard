@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from './api';  // Import the API instance
 import logger from './logger';
 import io from 'socket.io-client';
 import LogRocket from 'logrocket';
@@ -40,11 +40,7 @@ const App: React.FC = () => {
             }
 
             try {
-                const response = await axios.get('https://localhost:5000/api/policies', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const response = await api.get('/api/policies');  // Use the api instance
                 setPolicies(response.data);
                 setStatus('Policies Loaded');
             } catch (error) {
@@ -58,7 +54,7 @@ const App: React.FC = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('https://localhost:5000/api/login', {
+            const response = await api.post('/api/login', {  // Use the api instance
                 username,
                 password
             });
